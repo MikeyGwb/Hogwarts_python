@@ -32,7 +32,8 @@
 9. 实现函数，输出所有学生信息
 '''
 
-from system_tool import add_Student_Information,edit_Student_Information
+from system_tool import add_Student_Information, edit_Student_Information, delete_Student_Information, \
+    select_Student_Information
 
 Student_Information_value = []
 
@@ -69,4 +70,19 @@ while (True):
         sid_value = input("请输入想要修改的学生编号：")
         edit_Student_Information(Student_Information_value, sid_value)
 
+    if select_op == '3':
+        sid_value = input("请输入想要删除的学生编号：")
+        delete_Student_Information(Student_Information_value, "sid", sid_value)
+
+    if select_op == '4':
+        name_value = input("请输入想要删除的学生名称：")
+        delete_Student_Information(Student_Information_value, "name", name_value)
+
+    if select_op == '5':
+        sid_value = input("请输入想要查询的学生编号：")
+        select_Student_Information(Student_Information_value, "sid", sid_value)
+
+    if select_op == '6':
+        name_value = input("请输入想要查询的学生名称：")
+        select_Student_Information(Student_Information_value, "name", name_value)
 
