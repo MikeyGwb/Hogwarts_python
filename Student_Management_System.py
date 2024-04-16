@@ -52,10 +52,32 @@ def add_Student_Information(sid, name, age, gender):
     Student_Information_dict["name"] = name
     Student_Information_dict["age"] = age
     Student_Information_dict["gender"] = gender
-    # print(Student_Information_dict)
-    Student_Information_value.append(Student_Information_dict)
-    # print(Student_Information_value)
-    return print("添加成功")
+    if not Student_Information_value:
+        # print(Student_Information_dict)
+        Student_Information_value.append(Student_Information_dict)
+        # print(Student_Information_value)
+        return print("添加成功")
+    else:
+        if any(sid == i.get("sid") for i in Student_Information_value):
+            return print("添加失败，学生的编号重复")
+
+        Student_Information_value.append(Student_Information_dict)
+        return print("添加成功")
+
+def edit_Student_Information(sid):
+
+    if not Student_Information_value:
+        return print("系统中，没有数据，不可修改")
+    else:
+        if any(sid == i.get("sid") for i in Student_Information_value):
+            for dict in Student_Information_value:
+                for key, value in dict.items():
+                    if key == 'sid' & value == sid:
+                        print(key , value)
+            return print("修改成功")
+
+        return print("想要修改的学生编码不存在，无法进行修改")
+
 
 while (True):
     select_op = input("输入编号选择操作：")
@@ -72,5 +94,9 @@ while (True):
 
     if select_op == '7':
         print(Student_Information_value)
+
+    if select_op == '2':
+        sid_value = input("请输入想要修改的学生编号：")
+        edit_Student_Information(sid_value)
 # - 编号（sid), 姓名（name), 年龄（age), 性别（gender) 四个信息
 
