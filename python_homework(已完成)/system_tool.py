@@ -29,8 +29,12 @@ def edit_Student_Information(Student_Information_value, sid):
                         new_name_value = input("请输入学生的新名字：")
                         dict['name'] = new_name_value
                         new_age_value = input("请输入学生的新年龄：")
+                        while (is_number(new_age_value)):
+                            new_age_value = input("输入的学生年龄有误，请重新输入学生年龄：")
                         dict['age'] = new_age_value
                         new_gender_value = input("请输入学生的新性别：")
+                        while (is_gender(new_gender_value)):
+                            new_gender_value = input("输入的学生性别有误，请重新输入学生性别：")
                         dict['gender'] = new_gender_value
             return print("*****修改成功*****")
 
@@ -65,3 +69,16 @@ def select_Student_Information(Student_Information_value, key, value):
             return print("*****查询成功*****")
 
         return print("想要查询的学生编码&学生名字不存在")
+
+def is_number(a):
+    try:
+        int(a)
+        return False
+    except ValueError:
+        return True
+
+def is_gender(b):
+    if b != '男' and b != '女':
+        return True
+    else:
+        return False
