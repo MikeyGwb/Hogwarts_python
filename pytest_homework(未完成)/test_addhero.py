@@ -1,4 +1,6 @@
 from tested_system import HeroManagement
+import pytest
+import yaml
 
 class Test_Add_Hero:
     def setup_class(self):
@@ -9,6 +11,7 @@ class Test_Add_Hero:
     def teardown(self):
         pass
 
-    def test_add_hero(self, expected_results=True):
-        create_hero_result = HeroManagement.create_hero(self, hero_name='hero01', hero_volume=99, hero_power=50)
-        assert create_hero_result == expected_results
+    @pytest.mark.parametrize("test_data", yaml.safe_load(open("./create_hero_data.yaml")))
+    def test_add_hero(self, test_data):
+        create_hero_result = HeroManagement.create_hero(self, hero_name = test_data["hero_name_value"], hero_volume = int(test_data["hero_volume_value"]), hero_power= int(test_data["hero_power_value"]))
+        assert create_hero_result == test_data["expected_results"]
