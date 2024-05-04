@@ -1,0 +1,14 @@
+create:
+  P0:
+    datas:
+      - ["hero01", 99, 50, True]
+
+    ids:
+      - 两个正整数
+
+  P1:
+    datas:
+      - ["hero02", 99.99, 0.01, true]
+
+    ids:
+      - 有效边界值
