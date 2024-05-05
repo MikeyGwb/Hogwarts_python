@@ -35,5 +35,8 @@ class Test_Add_Hero:
         "hero_name,hero_volume,hero_power,expected_results", get_datas('create', 'P0')[0], ids=get_datas('create', 'P0')[1]
     )
     def test_add_hero(self, hero_name, hero_volume, hero_power, expected_results):
+        logger.info(f'创建英雄的名字为：{hero_name}，血量为：{hero_volume}，力量为：{hero_power}，预期结果为：{expected_results}')
         create_hero_result = self.heromanage.create_hero(hero_name, hero_volume, hero_power)
+        logger.info(f'实际结果为：{create_hero_result}')
         assert create_hero_result == expected_results
+
