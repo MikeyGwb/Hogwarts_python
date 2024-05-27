@@ -1,0 +1,18 @@
+add:
+  P0:
+    datas:
+      - ["s01", "tom_book", 50, "book_Summary", "添加成功"]
+      - ["s02", "jack_book", 100, "jack_Summary", "添加成功"]
+
+    ids:
+      - 正常数据添加成功
+      - 添加两个不一样的数据
+
+  P1:
+    datas:
+      - ["s01", "tom_book", 50, "book_Summary", "添加失败"]
+      - ["s03", "mike_book", abc, "mike_Summary", "添加成功"]
+
+    ids:
+      - 添加已存在ID的数据
+      - 价格为字符串
