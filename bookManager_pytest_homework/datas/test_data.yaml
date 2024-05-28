@@ -11,8 +11,41 @@ add:
   P1:
     datas:
       - ["s01", "tom_book", 50, "book_Summary", "添加失败"]
-      - ["s03", "mike_book", abc, "mike_Summary", "添加成功"]
+      - ["s03", "mike_book", abc, "mike_Summary", "添加失败"]
 
     ids:
       - 添加已存在ID的数据
       - 价格为字符串
+
+  P2:
+    datas:
+      - ['','','','','添加失败']
+
+    ids:
+      - 添加的数据为空
+
+modify:
+  P0:
+    datas:
+      - [ "s01", "mike_book", 500, "book_Summary", "修改成功" ]
+      - [ "s02", "jack_book", 250, "book_Summary", "修改成功" ]
+
+    ids:
+      - 正常修改信息
+      - 只修改价格
+
+  P1:
+    datas:
+      - [ "s03", "mike_book", 500, "book_Summary", "修改失败" ]
+      - [ "s02", "jack_book", abc, "book_Summary", "修改失败" ]
+
+    ids:
+      - 修改不存在的id
+      - 修改价格为字符串
+
+  P2:
+    datas:
+      - [ "s01", "", "", "", "修改失败" ]
+
+    ids:
+      - 修改信息为空

@@ -4,6 +4,12 @@ from bookManager_pytest_homework.utils.utils import Utils
 
 add_P0_data = Utils().get_datas('add', 'P0', "test_data")
 add_P1_data = Utils().get_datas('add', 'P1', "test_data")
+add_P2_data = Utils().get_datas('add', 'P2', "test_data")
+
+modify_P0_data = Utils().get_datas('modify', 'P0', "test_data")
+modify_P1_data = Utils().get_datas('modify', 'P1', "test_data")
+modify_P2_data = Utils().get_datas('modify', 'P2', "test_data")
+
 class TestBookManager():
 
     def setup_class(self):
@@ -19,9 +25,25 @@ class TestBookManager():
         result = self.bm.addBook(ID, Name, Price, Summary)
         assert result == expect
 
-    # def test_modifyBookByID(self):
-    #     result = self.bm.modifyBookByID("01", "tom", 100, "test")
-    #     assert result == "修改成功"
+    @pytest.mark.parametrize("ID, Name, Price, Summary, expect", add_P2_data[0], ids=add_P2_data[1])
+    def test_addBook_P2(self, ID, Name, Price, Summary, expect):
+        result = self.bm.addBook(ID, Name, Price, Summary)
+        assert result == expect
+
+    @pytest.mark.parametrize("ID, Name, Price, Summary, expect", modify_P0_data[0], ids=modify_P0_data[1])
+    def test_modifyBookByID_P0(self, ID, Name, Price, Summary, expect):
+        result = self.bm.modifyBookByID(ID, Name, Price, Summary)
+        assert result == expect
+
+    @pytest.mark.parametrize("ID, Name, Price, Summary, expect", modify_P1_data[0], ids=modify_P1_data[1])
+    def test_modifyBookByID_P1(self, ID, Name, Price, Summary, expect):
+        result = self.bm.modifyBookByID(ID, Name, Price, Summary)
+        assert result == expect
+
+    @pytest.mark.parametrize("ID, Name, Price, Summary, expect", modify_P2_data[0], ids=modify_P2_data[1])
+    def test_modifyBookByID_P2(self, ID, Name, Price, Summary, expect):
+        result = self.bm.modifyBookByID(ID, Name, Price, Summary)
+        assert result == expect
     #
     # def test_deleteBookByID(self):
     #     result = self.bm.deleteBookByID("01")

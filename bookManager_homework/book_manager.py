@@ -25,11 +25,9 @@ class BookManagement:
         ID = input("请输入编码：")
         return ID
 
-
     def __getName(self):
         Name = input("请输入书名：")
         return Name
-
 
     def __getPrice(self):
         while True:
@@ -52,23 +50,29 @@ class BookManagement:
                 return "添加失败"
 
         else:
-            book_detail_value = {"sid": ID, "name": Name, "price": Price, "summary": Summary}
-            self.manager_value.append(book_detail_value)
-            print("添加成功")
-            return "添加成功"
-
+            if type(Price) == int:
+                book_detail_value = {"sid": ID, "name": Name, "price": Price, "summary": Summary}
+                self.manager_value.append(book_detail_value)
+                print("添加成功")
+                return "添加成功"
+            else:
+                print("价格不合法，需要为数字")
+                return "添加失败"
 
     def modifyBookByID(self, ID, Name, Price, Summary):
         for i in self.manager_value:
             if i["sid"] == ID:
-                i["name"] = Name
-                i["price"] = Price
-                i["summary"] = Summary
-                print("修改成功")
-                return "修改成功"
+                if type(Price) == int:
+                    i["name"] = Name
+                    i["price"] = Price
+                    i["summary"] = Summary
+                    print("修改成功")
+                    return "修改成功"
+                else:
+                    print("价格不合法，需要为数字")
+                    return "修改失败"
         print(f"没有{ID}对应的书本信息")
         return "修改失败"
-
 
     def deleteBookByID(self, ID):
         for i in self.manager_value:
